@@ -1,6 +1,6 @@
 class SpendingPlan < ApplicationRecord
   has_many :allow_sharings, dependent: :destroy
-  belongs_to :user, optional: true
+  belongs_to :user
   belongs_to :budget
   enum plan_type: {income: 0, expense: 1}
   enum status: {waiting: 0, doing: 1, finished: 2}

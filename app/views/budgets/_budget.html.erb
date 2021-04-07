@@ -7,6 +7,8 @@
     <strong><%= t "budget.money" %>:</strong>
     <%= number_to_currency(budget.money, dilimiter: ",") %>
     <%= link_to t("budget.create"), new_with_parent_budgets_path(budget) %>
+    <a> | </a>
+    <%= link_to t("budget.new_plan"), plan_from_budgets_path(budget.id) %>
     <% unless budget.child_budgets.empty? %>
       <br>
       <span class="link_children" value=<%= budget.id %>><%= t "budget.load_children" %>&#x25BE;</span>

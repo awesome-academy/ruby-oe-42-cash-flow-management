@@ -14,3 +14,4 @@ en:
     to_money: "To"
     create: "New budget"
     load_children: "Load children budget"
+    new_plan: "New plan"

@@ -21,7 +21,7 @@ class SpendingPlansController < ApplicationController
   def edit; end
 
   def update
-    @spending_plan.budget_id = @budget.id
+    @spending_plan.budget_id = @budget.id if @budget.present?
     if @spending_plan.update spending_plan_params
       flash[:success] = t "flash.update_plan_success"
       redirect_to @spending_plan
@@ -34,7 +34,7 @@ class SpendingPlansController < ApplicationController
 
   def create
     @spending_plan = current_user.spending_plans.build spending_plan_params
-    @spending_plan.budget_id = @budget.id
+    @spending_plan.budget_id = @budget.id if @budget.present?
     if @spending_plan.save
       flash[:success] = t("flash.create_plan_success")
       redirect_to new_spending_plan_path
@@ -49,7 +49,7 @@ class SpendingPlansController < ApplicationController
     else
       flash[:danger] = t "flash.delete_plan_fail"
     end
-    redirect_to spending_plans_path
+    redirect_to recycle_plans_path
   end
 
   private
@@ -62,6 +62,8 @@ class SpendingPlansController < ApplicationController
   end
 
   def load_budget
+    return if params[:spending_plan][:budget_id].to_i == -1
+
     @budget = Budget.find_by id: params[:spending_plan][:budget_id] if
     params[:spending_plan].present?
     return if @budget.present?

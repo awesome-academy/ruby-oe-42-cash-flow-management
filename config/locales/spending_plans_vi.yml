@@ -37,7 +37,7 @@ vi:
         Quí: "yearly"
         Năm: "quarterly"
       option_new_budget:
-        Hạng mục mới +: -1
+        Hãy chọn hạng mục: -1
       button:
         "Đồng ý"
       status:

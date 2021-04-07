@@ -15,4 +15,12 @@ module SpendingPlansHelper
   def select_budget_when_search
     @current_user.budgets.pluck(:name, :id).to_h
   end
+
+  def default_for_select_budget
+    return params[:budget_id] if params[:budget_id].present?
+
+    return @spending_plan.budget.id if @spending_plan.budget.present?
+
+    -1
+  end
 end

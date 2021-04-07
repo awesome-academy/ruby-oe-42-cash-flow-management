@@ -37,7 +37,7 @@ en:
         Year: "yearly"
         Quarter: "quarterly"
       option_new_budget:
-        New budget +: -1
+        Please choose budget: -1
       button:
         "Create plan"
       status:
