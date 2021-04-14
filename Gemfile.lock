@@ -91,8 +91,15 @@ GEM
       deep_merge (~> 1.2, >= 1.2.1)
       dry-validation (~> 1.0, >= 1.0.0)
     crass (1.0.6)
+    database_cleaner (2.0.1)
+      database_cleaner-active_record (~> 2.0.0)
+    database_cleaner-active_record (2.0.0)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     deep_merge (1.2.1)
     diff-lcs (1.4.4)
+    docile (1.3.5)
     dry-configurable (0.12.1)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.5, >= 0.5.0)
@@ -129,6 +136,11 @@ GEM
       dry-schema (~> 1.5, >= 1.5.2)
     erubi (1.10.0)
     execjs (2.7.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     faker (2.1.2)
       i18n (>= 0.8)
     ffi (1.15.0)
@@ -156,10 +168,14 @@ GEM
     marcel (1.0.0)
     method_source (1.0.0)
     mini_mime (1.0.3)
+    mini_portile2 (2.5.0)
     minitest (5.14.4)
     msgpack (1.4.2)
     mysql2 (0.5.3)
     nio4r (2.5.7)
+    nokogiri (1.11.2)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     nokogiri (1.11.2-x86_64-linux)
       racc (~> 1.4)
     parallel (1.20.1)
@@ -191,6 +207,10 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.3.1)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -256,6 +276,16 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    shoulda-matchers (3.1.3)
+      activesupport (>= 4.0.0)
+    simplecov (0.21.2)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov-rcov (0.2.3)
+      simplecov (>= 0.4.1)
+    simplecov_json_formatter (0.1.2)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -307,6 +337,8 @@ DEPENDENCIES
   capybara (>= 3.26)
   chartkick
   config
+  database_cleaner
+  factory_bot_rails
   faker (= 2.1.2)
   i18n-js
   jbuilder (~> 2.7)
@@ -316,6 +348,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.3)
+  rails-controller-testing
   rails-i18n
   rspec-rails (~> 4.0.1)
   rubocop (~> 0.74.0)
@@ -323,6 +356,9 @@ DEPENDENCIES
   rubocop-rails (~> 2.3.2)
   sass-rails (>= 6)
   selenium-webdriver
+  shoulda-matchers (~> 3.1)
+  simplecov
+  simplecov-rcov
   spring
   turbolinks (~> 5)
   tzinfo-data

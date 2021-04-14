@@ -17,11 +17,8 @@ class User < ApplicationRecord
 
   class << self
     def User.digest string
-      cost = if ActiveModel::SecurePassword.min_cost
-               BCrypt::Engine::MIN_COST
-             else
-               BCrypt::Engine.cost
-             end
+      cost = BCrypt::Engine.cost
+      cost = BCrypt::Engine::MIN_COST if ActiveModel::SecurePassword.min_cost
       BCrypt::Password.create string, cost: cost
     end
   end
