@@ -33,7 +33,13 @@ config/credentials.yml.enc
 config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
+/spec/fixtures
+/spec/helpers
+/spec/models
+/spec/requests
+/spec/views
 /vendor/bundle
 
 /public/javascripts/translations.js
+
 /coverage
