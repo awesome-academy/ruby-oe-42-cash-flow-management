@@ -1,5 +1,6 @@
+<% provide(:title, t(".title")[0]) %>
 <div class="row">
-  <div class="col-lg-4 text-center">
+  <div class="col-lg-3 text-center">
     <h1><%= t(".title")[0] %></h1>
   </div>
   <%= form_tag spending_plans_path, method: :get do %>
@@ -29,7 +30,20 @@
       </select>
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-2 form-group">
+      <br>
+      <select class="form-control" name="status">
+        <option value=""><%= t(".title")[4] %></option>
+        <% select_for_status.each do |status| %>
+          <option value="<%= status[1] %>"
+            <%= (status[1] == params[:status]) ? "selected" : "" %>>
+            <%= status[0] %>
+          </option>
+        <% end %>
+      </select>
+    </div>
+
+    <div class="col-lg-3">
       <br>
       <div class="input-group">
         <input type="text" class="form-control" placeholder="<%= t(".title")[3] %>"

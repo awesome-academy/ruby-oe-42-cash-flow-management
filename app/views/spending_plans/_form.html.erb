@@ -12,8 +12,7 @@
   </div>
   <div class="form-group">
     <%= f.label :budget_id, t(".label")[2] %>
-    <%= f.select :budget_id, options_for_select(select_budget,
-    (@spending_plan.budget.present?) ? @spending_plan.budget.id : -1), class:"form-control"%>
+    <%= f.select :budget_id, options_for_select(select_budget,default_for_select_budget), class:"form-control"%>
   </div>
   <div class="form-group">
     <%= f.label :start_date, t(".label")[3] %>

@@ -1,6 +1,6 @@
 class BudgetsController < ApplicationController
   before_action :logged_in_user
-  before_action :load_budgets
+  before_action :load_budgets, only: %i(index new create)
   before_action :find_parent_budget, only: %i(new create),
                 if: ->{params[:parent_id]}
   before_action :vaild_range_money, only: :index

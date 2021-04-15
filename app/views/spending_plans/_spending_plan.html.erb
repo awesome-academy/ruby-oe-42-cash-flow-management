@@ -11,23 +11,34 @@
             </i>
         </span>
         <span style="display: <%= spending_plan.recycle ? "inline" : "none" %>">
-            <i>
-              <%= link_to t(".label")[6], recycle_plan_path(spending_plan),
-                method: :patch, data: {confirm: t(".content_restore")},
-                class:"text-primary" %>
-            </i>
+          <i>
+            <%= link_to t(".label")[6], recycle_plan_path(spending_plan),
+              method: :patch, data: {confirm: t(".content_restore")},
+              class:"text-primary" %>
+          </i>
         </span>
         <!-- Button trigger modal -->
-        <button class="share_button" type="button" data-plan-id=<%= spending_plan.id %> data-toggle="modal" data-target="#share_modal">
-          <i class="fas fa-share-square"></i>
-        </button>
+        <div style="display: <%= spending_plan.recycle ? "none" : "inline" %>">
+          <button class="share_button" type="button" data-plan-id=<%= spending_plan.id %> data-toggle="modal" data-target="#share_modal">
+            <i class="fas fa-share-square"></i>
+          </button>
+        </div>
       <% end %>
     </h3>
   </div>
   <div class="panel-body">
-    <b><%= t(".label")[2]%> </b><%= spending_plan.budget.name.capitalize %>
+    <b><%= t(".label")[2] %> </b><%= spending_plan.budget.name.capitalize %>
     <br>
-    <b><%= t(".label")[1]%> </b><%= spending_plan.plan_type.capitalize %>
+    <b><%= t(".label")[1] %> </b><%= spending_plan.plan_type.capitalize %>
+    <br>
+    <b><%= t(".label")[7] %> </b><%= spending_plan.status %>
+    <span style="display: <%= spending_plan.finished? ? "none" : "inline" %>">
+      <i>
+        <%= link_to t(".check_finish"), check_finish_spending_plan_path(spending_plan),
+          method: :patch, data: {confirm: t(".check_finish_confirm")},
+          class: "text-primary", remote: true %>
+      </i>
+    </span>
     <br>
     <b><%= t(".label")[3]%> </b>
     <%= number_to_currency(spending_plan.total_money, dilimiter: ",") %>

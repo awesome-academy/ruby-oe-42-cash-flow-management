@@ -23,7 +23,7 @@ class SpendingPlansController < ApplicationController
   def edit; end
 
   def update
-    @spending_plan.budget_id = @budget.id
+    @spending_plan.budget_id = @budget.id if @budget.present?
     if @spending_plan.update spending_plan_params
       flash[:success] = t "flash.update_plan_success"
       redirect_to @spending_plan
@@ -36,7 +36,7 @@ class SpendingPlansController < ApplicationController
 
   def create
     @spending_plan = current_user.spending_plans.build spending_plan_params
-    @spending_plan.budget_id = @budget.id
+    @spending_plan.budget_id = @budget.id if @budget.present?
     if @spending_plan.save
       flash[:success] = t("flash.create_plan_success")
       redirect_to new_spending_plan_path
@@ -51,6 +51,19 @@ class SpendingPlansController < ApplicationController
     else
       flash[:danger] = t "flash.delete_plan_fail"
     end
+    redirect_to recycle_plans_path
+  end
+
+  def check_finish
+    if @spending_plan.finished?
+      flash[:warning] = "Plan #{@spending_plan.name} is finished"
+    else
+      @spending_plan.finished!
+      flash[:success] = "Finish plan #{@spending_plan.name} success"
+    end
+    respond_to do |format|
+      format.html{redirect_to request.referer}
+    end
   end
 
   private
@@ -63,6 +76,8 @@ class SpendingPlansController < ApplicationController
   end
 
   def load_budget
+    return if params[:spending_plan][:budget_id].to_i == -1
+
     @budget = Budget.find_by id: params[:spending_plan][:budget_id] if
     params[:spending_plan].present?
     return if @budget.present?
@@ -72,12 +87,26 @@ class SpendingPlansController < ApplicationController
   end
 
   def search_spending_plan
-    @spending_plans = @spending_plans.filter_name params[:keyword] if
-                      params[:keyword].present?
-    @spending_plans = @spending_plans.filter_budget_id params[:budget_id] if
-                      params[:budget_id].present?
-    @spending_plans = @spending_plans.filter_plan_type params[:plan_type] if
-                      params[:plan_type].present?
+    search_by_name if params[:keyword].present?
+    search_by_budget if params[:budget_id].present?
+    search_by_plan_type if params[:plan_type].present?
+    search_by_status if params[:status].present?
+  end
+
+  def search_by_name
+    @spending_plans = @spending_plans.filter_name params[:keyword]
+  end
+
+  def search_by_budget
+    @spending_plans = @spending_plans.filter_budget_id params[:budget_id]
+  end
+
+  def search_by_plan_type
+    @spending_plans = @spending_plans.filter_plan_type params[:plan_type]
+  end
+
+  def search_by_status
+    @spending_plans = @spending_plans.filter_status params[:status]
   end
 
   def send_plan_to_recycle
