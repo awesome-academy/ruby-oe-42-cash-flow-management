@@ -8,7 +8,7 @@ class BudgetsController < ApplicationController
   def index
     search_by_name if params[:name].present?
     if params[:from_money].present? || params[:to_money].present?
-      search_by_money
+      @budgets = search_by_money
     end
     @budgets = paginate @budgets.order_by_creat_at_desc
   end
@@ -21,7 +21,7 @@ class BudgetsController < ApplicationController
     @budget = current_user.budgets.build budget_params
     if @budget.save
       flash[:success] = t "flash.create_budget_success"
-      redirect_to root_path
+      redirect_to budgets_path
     else
       params[:parent_id] = params[:budget][:parent_id]
       render :new
@@ -39,11 +39,11 @@ class BudgetsController < ApplicationController
   end
 
   def find_parent_budget
-    @parent_budget = @budgets.find_by id: params[:parent_id]
+    @parent_budget = @current_user.budgets.find_by id: params[:parent_id]
     return if @parent_budget
 
     flash[:danger] = t "flash.not_found_budget"
-    redirect_to root_path
+    redirect_to new_budget_path
   end
 
   def search_by_name
@@ -60,7 +60,7 @@ class BudgetsController < ApplicationController
       return @budgets.search_by_from_money params[:from_money]
     end
 
-    @budgets = @budgets.search_by_to_money params[:to_money]
+    @budgets.search_by_to_money params[:to_money]
   end
 
   def valid_money_params?
