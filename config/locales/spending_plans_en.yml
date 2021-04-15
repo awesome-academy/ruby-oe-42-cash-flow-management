@@ -3,6 +3,10 @@ en:
     index:
       title: "Recycle"
       empty_content: "Recycle is empty"
+  share_plans:
+    index:
+      title: "Your shared plan"
+      owner: "Owner"
   spending_plans:
     spending_plan:
       label:
@@ -13,8 +17,11 @@ en:
         - "Time: "
         - "Delete"
         - "Restore"
+        - "Status: "
       content_delete: "You sure?"
       content_restore: "You want to restore?"
+      check_finish: "Check finish"
+      check_finish_confirm: "Finish this plan"
     new:
       title: "Create new plan"
     form:
@@ -36,8 +43,12 @@ en:
         Month: "monthly"
         Year: "yearly"
         Quarter: "quarterly"
+      option_for_status:
+        waiting: "waiting"
+        doing: "doing"
+        finished: "finished"
       option_new_budget:
-        New budget +: -1
+        Please choose budget: -1
       button:
         "Create plan"
       status:
@@ -57,6 +68,7 @@ en:
         - "Choose budget"
         - "Choose type"
         - "Seach by name"
+        - "Choose status"
       button: "Tìm kiếm"
     show:
       label:

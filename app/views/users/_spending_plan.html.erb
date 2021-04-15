@@ -3,6 +3,7 @@
   <%= link_to spending_plan.name, spending_plan_path(spending_plan.id) %><br>
   <label><%= t("spending_plans.spending_plan.label")[2] %></label> <%= spending_plan.budget.name %><br>
   <label><%= t("spending_plans.spending_plan.label")[3] %></label> <%= number_to_currency(spending_plan.total_money) %><br>
+  <label><%= t("spending_plans.spending_plan.label")[7] %></label> <%= spending_plan.status %><br>
   <small>
     <i><%= t("spending_plans.spending_plan.label")[4]%>
       <%= l spending_plan.start_date %> ->

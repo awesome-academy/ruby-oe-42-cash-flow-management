@@ -1,6 +1,6 @@
 class SpendingPlan < ApplicationRecord
   has_many :allow_sharings, dependent: :destroy
-  belongs_to :user, optional: true
+  belongs_to :user
   belongs_to :budget
   enum plan_type: {income: 0, expense: 1}
   enum status: {waiting: 0, doing: 1, finished: 2}
@@ -20,6 +20,7 @@ class SpendingPlan < ApplicationRecord
   scope :filter_name, ->(name){where "name LIKE ?", "%#{name}%"}
   scope :filter_budget_id, ->(budget_id){where budget_id: budget_id}
   scope :filter_plan_type, ->(type){where plan_type: type}
+  scope :filter_status, ->(status){where status: status}
   scope :filter_statistic, (lambda do |start_statistic, end_statistic|
     where("start_date between ? and ?", start_statistic, end_statistic)
     .or(where("end_date between ? and ?", start_statistic, end_statistic))
@@ -29,6 +30,9 @@ class SpendingPlan < ApplicationRecord
     where("Month(end_date) = ? and Year(end_date) = ?", date.month, date.year)
   end)
   scope :is_recycle, ->(recycle){where recycle: recycle}
+  scope :load_shared_plan, (lambda do |user_id|
+    joins(:allow_sharings).where("allow_sharings.user_id = ?", user_id)
+  end)
 
   before_create :status_for_plan
   before_create :repeat_type_for_plan

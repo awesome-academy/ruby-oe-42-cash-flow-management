@@ -12,10 +12,13 @@ Rails.application.routes.draw do
       collection do
         get "/:parent_id/new", to: "budgets#new", as: "new_with_parent"
         post "/:parent_id", to: "budgets#create", as: "with_parent"
+        get  "/:budget_id/new_plan",to: "spending_plans#new", as: "plan_from"
       end
     end
-    resources :spending_plans
-    resources :share_plans, only: :create
+    resources :spending_plans do
+      patch :check_finish, on: :member
+    end
+    resources :share_plans, only: %i(create index)
     resources :statistics, only: :index
     resources :recycle_plans, only: %i(index update)
   end

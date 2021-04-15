@@ -3,6 +3,10 @@ vi:
     index:
       title: "Thùng rác"
       empty_content: "Thùng rác đang trống"
+  share_plans:
+    index:
+      title: "Kế hoạch được chia sẻ với bạn"
+      owner: "Người sở hữu"
   spending_plans:
     spending_plan:
       label:
@@ -13,8 +17,11 @@ vi:
         - "Thời gian: "
         - "Xóa"
         - "Khôi phục"
+        - "Trạng thái: "
       content_delete: "Bạn có chắc chắn?"
       content_restore: "Bạn muốn khôi phục kế hoạch?"
+      check_finish: "Hoàn thành"
+      check_finish_confirm: "Hoàn thành kế hoạch này"
     new:
       title: "Tạo kế hoạch mới"
     form:
@@ -36,8 +43,12 @@ vi:
         Tháng: "monthly"
         Quí: "yearly"
         Năm: "quarterly"
+      option_for_status:
+        Đợi triển khai: "watting"
+        Đang thực hiện: "doing"
+        Đã xong: "finished"
       option_new_budget:
-        Hạng mục mới +: -1
+        Hãy chọn hạng mục: -1
       button:
         "Đồng ý"
       status:
@@ -57,6 +68,7 @@ vi:
         - "Chọn hạng mục"
         - "Thu hay chi?"
         - "Tìm theo tên"
+        - "Chọn trạng thái"
       button: "Tìm kiếm"
     show:
       label:
