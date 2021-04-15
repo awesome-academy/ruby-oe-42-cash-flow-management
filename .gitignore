@@ -41,5 +41,3 @@ config/environments/*.local.yml
 /vendor/bundle
 
 /public/javascripts/translations.js
-
-/coverage
