@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= user.email %>
+        <span><i>
+          <%= link_to t(".label")[0], delete_user_path(user),
+            method: :delete, data: {confirm: t(".content_delete", email: user.email)}, class:"text-primary" %>
+        </i></span>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <b><%= t(".label")[1] %></b> <%= l user.created_at %>
+    <br>
+    <b><%= t(".label")[2] %> </b> <%= user.role.capitalize %>
+  </div>
+</div>

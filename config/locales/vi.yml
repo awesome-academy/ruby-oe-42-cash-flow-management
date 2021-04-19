@@ -39,6 +39,11 @@ vi:
     not_found_user: "Không tìm thấy người dùng"
     share_plan_success: "Chỉa sẻ thành công"
     exist_sharing: "Đã được chia sẻ trước đó"
+    delete_user_success: "Xóa tài khỏan thành công"
+    delete_user_fail: "Khong thể xóa tài khoản"
+    find_user_fail: "Không tìm thấy tài khoản"
+    delete_current_user: "Không thể xóa tài khoản chính mình"
+    authorized_user: "Bạn không có quyền thực hiện"
   validate:
     error_end_day_blank: "Hãy chọn ngày kết thúc"
     error_end_day_compare: "Ngày kết thúc phải ở trước ngày bắt đầu"

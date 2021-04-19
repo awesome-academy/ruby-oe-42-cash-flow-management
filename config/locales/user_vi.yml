@@ -1,0 +1,9 @@
+vi:
+  users:
+    user:
+      title: "Tất cả tài khoản"
+      label:
+        - "Xóa"
+        - "Ngày tạo: "
+        - "Vai trò: "
+      content_delete: "Bạn có chắc muốn xóa: %{email}"

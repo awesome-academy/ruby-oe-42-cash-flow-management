@@ -1,0 +1,9 @@
+en:
+  users:
+    user:
+      title: "All users"
+      label:
+        - "Delete"
+        - "Create at: "
+        - "Role: "
+      content_delete: "You sure delete user: %{email}"

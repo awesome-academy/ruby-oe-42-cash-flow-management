@@ -14,6 +14,9 @@ class User < ApplicationRecord
   #                   format: {with: Settings.user.email.regex}
   # validates :password, presence: true,
   #                      length: {minimum: Settings.user.password.min_length}
+
+  scope :order_by_creat_at_desc, ->{order(created_at: :asc)}
+
   enum role: {user: 0, admin: 1}
 
   before_save :downcase_email

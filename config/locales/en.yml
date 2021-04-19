@@ -40,6 +40,11 @@ en:
     not_found_user: "Not found user"
     share_plan_success: "Share plan success"
     exist_sharing: "Has been shared before"
+    delete_user_success: "Delete success"
+    delete_user_fail: "Can not delete user"
+    find_user_fail: "Can not find user"
+    delete_current_user: "Can not delete yourself"
+    authorized_user: "You do not have permission to do this"
   validate:
     error_end_day_blank: "Please chooe end day"
     error_end_day_compare: "The end date is after the start date"

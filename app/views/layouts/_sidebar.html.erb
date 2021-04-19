@@ -1,6 +1,7 @@
 <div id="sidebar-wrapper" class="col-md-2">
   <ul class="sidebar-nav">
     <li><%= link_to t("profile"), show_user_path(current_user) %></li>
+    <li><%= link_to t("users.user.title"), users_path %></li>
     <li><%= link_to t("new_plan"), new_spending_plan_path %></li>
     <li><%= link_to t("all_plan"), spending_plans_path %></li>
     <li><%= link_to t("budget.name"), budgets_path %></li>

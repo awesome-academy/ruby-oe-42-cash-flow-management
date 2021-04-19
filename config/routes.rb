@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
     get "page_layout/home"
     get "page_layout/about"
-    delete "/logout", to: "sessions#destroy"
     get "show_user/:id", to: "users#show", as: "show_user"
+    delete "delete_user/:id", to: "users#destroy", as: "delete_user"
+    resources :users, only: :index
     resources :budgets, only: %i(index new create) do
       collection do
         get "/:parent_id/new", to: "budgets#new", as: "new_with_parent"
