@@ -13,11 +13,11 @@ module SpendingPlansHelper
 
   def select_budget
     I18n.t("spending_plans.form.option_new_budget")
-        .merge @current_user.budgets.pluck(:name, :id).to_h
+        .merge current_user.budgets.pluck(:name, :id).to_h
   end
 
   def select_budget_when_search
-    @current_user.budgets.pluck(:name, :id).to_h
+    current_user.budgets.pluck(:name, :id).to_h
   end
 
   def default_for_select_budget

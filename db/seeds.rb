@@ -7,7 +7,8 @@ name_users.each do |user|
   User.create! name: name,
                email: email,
                password: password,
-               password_confirmation: password
+               password_confirmation: password,
+               confirmed_at: Time.zone.now
 end
 
 users = User.order(:created_at)

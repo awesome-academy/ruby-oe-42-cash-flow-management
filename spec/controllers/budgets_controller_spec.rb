@@ -1,11 +1,7 @@
 require "rails_helper"
-include SessionsHelper
 
  RSpec.describe BudgetsController, type: :controller do
-  before do
-    log_in FactoryBot.create :user
-    current_user
-  end
+  login_user
 
   describe "#new" do
     context "when not having parent_id" do
@@ -17,7 +13,7 @@ include SessionsHelper
     end
 
     context "when having parent_id" do
-      let!(:budget) {FactoryBot.create :budget, user_id: @current_user.id}
+      let!(:budget) {FactoryBot.create :budget, user_id: subject.current_user.id}
       context "when parent_id corrext" do
         it "renders new budget page with parent_id" do
           get :new, params: { parent_id: budget.id}
@@ -64,9 +60,9 @@ include SessionsHelper
   end
 
   describe "#index" do
-    let!(:budget1) {FactoryBot.create :budget, name: "luong", money: 51, user_id: @current_user.id}
-    let!(:budget2) {FactoryBot.create :budget, name: "dien", money: 151, user_id: @current_user.id}
-    let!(:budget3) {FactoryBot.create :budget, name: "nha", money: 1500, user_id: @current_user.id}
+    let!(:budget1) {FactoryBot.create :budget, name: "luong", money: 51, user_id: subject.current_user.id}
+    let!(:budget2) {FactoryBot.create :budget, name: "dien", money: 151, user_id: subject.current_user.id}
+    let!(:budget3) {FactoryBot.create :budget, name: "nha", money: 1500, user_id: subject.current_user.id}
     context "when search by name" do
       it "render index page with budgets search by name" do
         get :index, params: {name: "luong"}

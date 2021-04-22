@@ -76,7 +76,7 @@
         <input type="text" id="email" placeholder=<%= t("spending_plans.placeholder_email") %>>
         <%= form_with url: share_plans_path, id: :form_share do |f| %>
           <%= f.hidden_field :emails %>
-          <%= f.hidden_field :plan_id %>
+          <%= f.hidden_field :id %>
         <% end %>
       </div>
       <div class="modal-footer">

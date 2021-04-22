@@ -1,13 +1,13 @@
 <div id="sidebar-wrapper" class="col-md-2">
   <ul class="sidebar-nav">
     <li class="sidebar-brand"><%= link_to current_user.name, user_path(current_user) %></li>
-    <li><%= link_to t("profile"), "#" %></li>
+    <li><%= link_to t("profile"), edit_user_registration_path %></li>
     <li><%= link_to t("new_plan"), new_spending_plan_path %></li>
     <li><%= link_to t("all_plan"), spending_plans_path %></li>
     <li><%= link_to t("share_plan"), share_plans_path %></li>
     <li><%= link_to t("budget.name"), budgets_path %></li>
     <li><%= link_to t("statistic"), statistics_path %></li>
     <li><%= link_to t("recycle"), recycle_plans_path %></li>
-    <li><%= link_to t("sign_out"), logout_path, method: :delete  %></li>
+    <li><%= link_to t("sign_out"), destroy_user_session_path, method: :delete  %></li>
   </ul>
 </div>

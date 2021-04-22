@@ -1,6 +1,6 @@
 module PlanServices
   def load_spending_plan
-    @spending_plan = SpendingPlan.find_by id: params[:plan_id]
+    @spending_plan = SpendingPlan.find_by id: params[:id]
     return if @spending_plan
 
     flash[:warning] = t "flash.plan_not_present"
