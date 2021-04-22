@@ -1,5 +1,5 @@
 class BudgetsController < ApplicationController
-  before_action :logged_in_user
+  before_action :authenticate_user!
   before_action :load_budgets, only: %i(index new create)
   before_action :find_parent_budget, only: %i(new create),
                 if: ->{params[:parent_id]}
@@ -39,7 +39,7 @@ class BudgetsController < ApplicationController
   end
 
   def find_parent_budget
-    @parent_budget = @current_user.budgets.find_by id: params[:parent_id]
+    @parent_budget = current_user.budgets.find_by id: params[:parent_id]
     return if @parent_budget
 
     flash[:danger] = t "flash.not_found_budget"

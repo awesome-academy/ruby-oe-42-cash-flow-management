@@ -7,5 +7,6 @@ vi:
         - "Email:"
         - "Mật khẩu:"
         - "Xác nhận mật khẩu:"
+        - "Mật khẩu hiện tại:"
       button: "Tạo tài khoản"
   new_user: "Người dùng mới?"

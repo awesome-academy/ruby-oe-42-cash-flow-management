@@ -1,7 +1,7 @@
 class SpendingPlansController < ApplicationController
   include PlanServices
 
-  before_action :logged_in_user
+  before_action :authenticate_user!
   before_action :load_spending_plan, except: %i(new index create)
   before_action :check_owner_of_plan, except: %i(new index create)
   before_action :send_plan_to_recycle, only: :destroy

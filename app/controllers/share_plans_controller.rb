@@ -1,13 +1,13 @@
 class SharePlansController < ApplicationController
   include PlanServices
 
-  before_action :logged_in_user
+  before_action :authenticate_user!
   before_action :load_spending_plan, only: :create
   before_action :check_owner_of_plan, only: :create
   before_action :load_user, only: :create
 
   def index
-    @shared_plans = SpendingPlan.load_shared_plan(@current_user.id)
+    @shared_plans = SpendingPlan.load_shared_plan(current_user.id)
                                 .includes(:budget).includes(:user)
     @shared_plans = paginate @shared_plans.order_by_creat_at_desc
   end

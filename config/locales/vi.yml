@@ -19,6 +19,10 @@ vi:
   currency: "VNĐ"
   all_plan: "Kế hoạch của bạn"
   cash_flow: "Tài chính của bạn"
+  remember_me: "Nhớ tài khoản trên máy tính này?"
+  forgot_password: "Quên mật khẩu?"
+  receive_confirmation: "Không nhận được hướng dẫn xác nhận?"
+  receive_unlock: "Không nhận được hướng dẫn mở khóa?"
   flash:
     sign_in_success: "Chào mừng bạn đến với Cash Flow!"
     invalid_sign_in: "Email hoặc mật khẩu không đúng"
@@ -28,6 +32,7 @@ vi:
     please_login: "Hãy đăng nhập trước"
     create_budget_success: "Tạo khoản ngân sách thành công"
     not_found_budget: "Không thể tìm thấy khoảng chi"
+    not_found_parent_budget: "Không thể tìm thấy khoảng chi cha"
     not_your_plan: "Kế hoạch không phải của bạn"
     plan_not_present: "Kế hoạch không tồn tại !"
     plan_to_recycle_success: "Đã chuyển vào thùng rác"

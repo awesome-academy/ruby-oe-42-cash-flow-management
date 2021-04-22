@@ -4,8 +4,9 @@
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to t(".home"), root_path %></li>
       <li><%= link_to t(".about"), page_layout_about_path %></li>
-      <% unless logged_in? %>
-        <li><%= link_to t("sign_in"), login_path %></li>
+      <li><%= link_to t("sign_up"), new_user_registration_path %></li>
+      <% unless user_signed_in? %>
+        <li><%= link_to t("sign_in"), new_user_session_path %></li>
       <% end %>
       <li class="dropdown">
         <%= link_to "#", class: "dropdown-toggle",

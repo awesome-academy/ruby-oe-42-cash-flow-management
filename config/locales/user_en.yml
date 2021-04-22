@@ -7,5 +7,6 @@ en:
         - "Email:"
         - "Password:"
         - "Confirmation:"
+        - "Current password:"
       button: "Create my account"
   new_user: "New user?"
